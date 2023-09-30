@@ -1,0 +1,44 @@
+<app-header></app-header>
+
+<div class="ipo-list">
+    <div class="title">
+        <h1>All watchlists</h1>
+    </div>
+
+    <div class="controls">
+        <div class="filter-input">
+            <input pInputText type="text" placeholder="Filter by Symbol" />
+        </div>
+        <div class="sort-dropdown">
+            <p-dropdown [options]="sortOptions" placeholder="Sort by"></p-dropdown>
+        </div>
+    </div>
+
+    <p-table [value]="watchlist" [paginator]="true" [rows]="4" class="ipo-table">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Company Logo</th>
+                <th>Company Name</th>
+                <th>Price</th>
+                <th>Change (%)</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-watchlist>
+            <tr>
+                <td>
+                    <img src="https://tse3.mm.bing.net/th?id=OIP.ag5nBrr4YiPHmZmBSHJypQHaHa&pid=Api&P=0&h=180" alt="Company Logo" style="width: 20%" />
+                </td>
+                <td>
+                    {{ watchlist.stockSymbol }}
+                </td>
+                <td>
+                    <b>₹{{ (watchlist.currentPrice | number : "1.2-2") ?? "Loading..."  }}</b>
+                </td>
+                <td>{{ watchlist?.changePercent ? (watchlist?.changePercent | number : "1.2-2") + " %" : watchlist.currentPrice ? "NAN" : "loading..."}}</td>
+                <td>
+                    <p-button label="Delete" styleClass="p-button-danger p-button-sm" (click)="deleteWatchlist(watchlist?._id)"></p-button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

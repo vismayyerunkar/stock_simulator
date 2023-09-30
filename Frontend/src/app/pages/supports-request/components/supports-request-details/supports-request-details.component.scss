@@ -1,0 +1,47 @@
+h3 {
+  margin-bottom: 0rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 25px 15px 15px;
+}
+
+.navigate-back {
+  display: flex;
+  flex-direction: row;
+  i {
+    cursor: pointer;
+  }
+}
+
+::ng-deep {
+  .notesCard {
+    .p-card-content {
+      padding: 0px;
+    }
+  }
+
+  .note, .comment {
+    background-color: #e8833a;
+    color: white;
+    margin-bottom: 12px;
+
+    .p-card-body {
+      padding: 1rem;
+    }
+
+    .p-card-content {
+      padding: 0px;
+    }
+
+    h3 {
+      margin-bottom: 0px;
+    }
+  }
+
+  .p-dropdown {
+    width: 100%;
+  }
+}

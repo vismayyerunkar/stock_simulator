@@ -1,0 +1,11 @@
+::ng-deep{
+    .assetsList {
+        .p-card-content {
+            padding: 0px;
+        }
+        
+        .p-button.p-button-sm .p-button-icon{
+            font-size: 1.25rem;
+        }
+    }
+}

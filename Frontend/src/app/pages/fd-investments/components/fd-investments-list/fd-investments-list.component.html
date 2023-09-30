@@ -1,0 +1,157 @@
+<app-header></app-header>
+<p-card class="fd-investments-list">
+  <div class="flex flex-row justify-content-between align-items-center mb-3">
+    <h1 class="mb-0">FD Investments</h1>
+  </div>
+  <p-table
+    [value]="fdInvestmentList"
+    dataKey="id"
+    [rows]="limit"
+    [totalRecords]="totalCount"
+    [lazy]="true"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    styleClass="p-datatable-customers p-datatable-gridlines"
+    [paginator]="true"
+    (onPage)="paginate($event)"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  >
+    <ng-template pTemplate="caption">
+      <div class="grid">
+        <p-dropdown
+          placeholder="Status Filter"
+          [options]="statusOption"
+          [(ngModel)]="selectedStatus"
+          [style]="{ minWidth: '275px' }"
+          class="col-12 sm:col-6 xl:col-3"
+          (onChange)="filterChange()"
+        ></p-dropdown>
+
+        <div class="col-12 sm:col-6 xl:col-3">
+          <p-calendar
+            [(ngModel)]="selectedDate"
+            selectionMode="range"
+            [readonlyInput]="true"
+            inputId="range"
+            [style]="{ width: '100%' }"
+            placeholder="Select Date Range"
+            (onSelect)="changeFilterDate()"
+            [showIcon]="true"
+          ></p-calendar>
+        </div>
+
+        <p-dropdown
+          placeholder="Sort By"
+          optionLabel="name"
+          [options]="sortOption"
+          [(ngModel)]="selectedSort"
+          [style]="{ minWidth: '275px' }"
+          class="col-12 sm:col-6 xl:col-3"
+          (onChange)="filterChange()"
+        ></p-dropdown>
+
+        <p-button
+          label="Clear Filter"
+          class="clear col-12 sm:col-6 xl:col-3"
+          [style]="{
+            minWidth: '270px',
+            'background-color': 'white',
+            color: 'black'
+          }"
+          (click)="clearFilter()"
+        ></p-button>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>ID</th>
+        <th>User Id</th>
+        <th>Invested On</th>
+        <th>Maturity Date</th>
+        <th>Amount</th>
+        <th>Expected ROI</th>
+        <th>Tenure</th>
+        <th>Status</th>
+        <th>Repayment</th>
+        <th>Repayment Status</th>
+        <th>Sanity Check</th>
+        <th>Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-investment>
+      <tr>
+        <td>{{ investment.id }}</td>
+        <td>
+          <button
+            pButton
+            type="button"
+            icon="pi pi-user"
+            class="p-button-text p-button-rounded p-button-sm"
+            (click)="openInvestor(investment.user)"
+          ></button>
+        </td>
+        <td>{{ investment.created_on | date }}</td>
+        <td>{{ investment.maturity_date | date }}</td>
+        <td>
+          {{ investment.unutilized_amount | number : "1.2" }} /
+          {{ investment.amount | number : "1.2" }}
+        </td>
+        <td>{{ investment.expected_roi | number : "1.2" }}</td>
+        <td>{{ investment.tenure }} / {{ investment.tenure_type[0] }}</td>
+        <td>
+          {{ investment.status }}<br />
+          <div style="font-size: 10px">
+            {{ investment.status_dtm | date }}
+          </div>
+        </td>
+        <td>
+          {{
+            investment.investment_summary.paid_repayment_sum | number : "1.2"
+          }}
+          /
+          {{
+            investment.investment_summary.expected_minimum_repayment
+              | number : "1.2"
+          }}
+        </td>
+        <td>
+          {{ investment.investment_summary.repayment_status }}
+          <div style="font-size: 10px">
+            {{ investment.investment_summary.repayment_status_date | date }}
+          </div>
+        </td>
+        <td class="text-center">
+          <i
+            class="pi"
+            [ngClass]="{
+              'pi-verified':
+                !investment.investment_summary.sanity_check_failed,
+              'pi-times-circle':
+                investment.investment_summary.sanity_check_failed
+            }"
+          ></i>
+        </td>
+        <td>
+          <button
+            pButton
+            type="button"
+            icon="pi pi-info-circle"
+            class="p-button-text p-button-rounded p-button-sm"
+            [routerLink]="'/fd-investments/list/' + investment.id"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td
+          colspan="12"
+          [style]="{ 'justify-content': 'center', 'text-align': 'center' }"
+        >
+          No Investments found.
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>
+<p-toast position="top-right"></p-toast>

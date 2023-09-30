@@ -1,0 +1,129 @@
+<app-header></app-header>
+
+<div class="card" *ngIf="asset">
+  <div class="flex flex-row justify-content-between align-items-center mb-1">
+    <h1 class="mb-0">
+      <i
+        class="pi pi-angle-left"
+        style="font-size: 2rem"
+        (click)="navigateBack()"
+      ></i
+      ><Span
+        >Asset #{{ id }} ({{ asset.partner.name }}) - ({{ asset.name }})</Span
+      >
+    </h1>
+    <div>
+      <button
+        pButton
+        pRipple
+        type="button"
+        icon="pi pi-pencil"
+        class="p-button p-button-outlined"
+        style="margin-right: 1rem; width: 2rem; height: 2rem; margin-top: 2rem"
+        routerLink="/assets/add"
+        [queryParams]="{ assetId: asset.id }"
+      ></button>
+      <button
+        *ngIf="asset.status === 'NEW'"
+        pButton
+        pRipple
+        (click)="approveAssetConfirmation()"
+        type="button"
+        label="Approve"
+        class="p-button-outlined"
+        style="margin-right: 1rem; height: 34px; margin-top: 2rem"
+      ></button>
+      <button
+        *ngIf="asset.status === 'NEW'"
+        pButton
+        pRipple
+        (click)="CancelAssetConfirmation()"
+        type="button"
+        label="Cancel"
+        class="p-button-outlined"
+        style="margin-right: 1rem; height: 34px; margin-top: 2rem"
+      ></button>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="col-6 flex align-items-center justify-content-center">
+      <div class="card">
+        <div class="card-container green-container overflow-hidden">
+          <div class="flex justify-content-center">
+            <div class="flex align-items-center justify-content-center">
+              <p-image
+                *ngIf="!asset.image"
+                src="https://tse3.mm.bing.net/th?id=OIP.zc3XRPZxUt4Xt7zDZYLa_wHaHa&pid=Api&P=0"
+                alt="Image"
+                width="100"
+                height="100"
+              ></p-image>
+              <p-image
+                *ngIf="asset.image"
+                [src]="asset.image"
+                alt="Image"
+                width="auto"
+                height="100"
+                [style]="{ 'max-width': '100px !important' }"
+              ></p-image>
+            </div>
+          </div>
+          <div class="flex">
+            <div
+              class="flex-auto flex align-items-center justify-content-center mb-1"
+            >
+              <button
+                pButton
+                pRipple
+                type="button"
+                [label]="asset.status"
+                class="p-button-outlined"
+                [style]="{ height: '30px' }"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-7">
+        <h3>Asset Id : {{ asset.asset_id }}</h3>
+        <h3>Asset Class: {{ asset.asset_class.name }}</h3>
+        <h3>Created On: {{ asset.created_on | date : "d MMM yyyy" }}</h3>
+        <h3 *ngIf="asset.is_listed">Listed On: 1 Jan 2022</h3>
+        <h3>Maturity On: {{ asset.maturity_date | date : "d MMM yyyy" }}</h3>
+      </div>
+    </div>
+    <div class="col-1">
+      <p-divider layout="vertical"> </p-divider>
+    </div>
+    <div class="col-4">
+      <h3>Manager : Manager Name</h3>
+      <h3>Total Amount: Rs. {{ asset.amount | number : "1.2" }}</h3>
+      <h3>
+        Subscription Amount: Rs. {{ asset.subscribed_amount | number : "1.2" }}
+      </h3>
+      <h3>Current ROI(As on date): 15%</h3>
+      <h3>Expected ROI: 20%</h3>
+      <h3>Performance Status: Value</h3>
+    </div>
+  </div>
+</div>
+
+<p-tabView>
+  <p-tabPanel header="Details" leftIcon="pi pi-home">
+    <app-details [asset]="asset"></app-details>
+  </p-tabPanel>
+
+  <p-tabPanel header="Investments" leftIcon="pi pi-server">
+    <app-investments [assetId]="id"></app-investments>
+  </p-tabPanel>
+
+  <p-tabPanel header="Income" leftIcon="pi pi-credit-card">
+    <app-income></app-income>
+  </p-tabPanel>
+
+  <p-tabPanel header="Notes" leftIcon="pi pi-wallet">
+    <app-notes></app-notes>
+  </p-tabPanel>
+</p-tabView>
+<p-confirmDialog></p-confirmDialog>
+<p-toast position="top-right"></p-toast>

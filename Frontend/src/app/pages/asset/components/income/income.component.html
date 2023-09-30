@@ -1,0 +1,72 @@
+<p-card class="income">
+  <div class="grid">
+    <div class="col-5">
+      <h2>Total Amount: 1,00,00,000</h2>
+    </div>
+    <div class="col-4">
+      <h2>Current ROI: 50%</h2>
+    </div>
+    <div class="col-3">
+      <h2>Expected ROI: 50%</h2>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="col-5">
+      <h2>Income Received: 1,00,000</h2>
+    </div>
+    <div class="col-6">
+      <h2>Expected Income: 1,50,000</h2>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="col-6">
+      <h2>Maturity Date: 1st Jan 2023</h2>
+    </div>
+  </div>
+
+  <br />
+  <p-table
+    [value]="incomeList"
+    dataKey="id"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [loading]="loading"
+    styleClass="p-datatable-customers p-datatable-gridlines"
+    [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>ID</th>
+        <th>Amount</th>
+        <th>Purpose</th>
+        <th>Transaction Dtm</th>
+        <th>Consumed On</th>
+        <th>Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-income>
+      <tr>
+        <td>{{ income.id }}</td>
+        <td>$ {{ income.amount }}</td>
+        <td>{{ income.purpose }}</td>
+        <td>{{ income.transaction_dtm }}</td>
+        <td>{{ income.consumed_on | date:'dd-mm-yyyy'}}</td>
+        <td>
+          <button
+            pButton
+            type="button"
+            icon="pi pi-ellipsis-v"
+            class="p-button-text p-button-sm"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="7">No income found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>

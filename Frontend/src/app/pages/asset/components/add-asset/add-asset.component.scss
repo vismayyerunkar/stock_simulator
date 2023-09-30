@@ -1,0 +1,46 @@
+h3 {
+  margin-bottom: 0rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 25px 15px 15px;
+  ::ng-deep .p-card .p-card-content {
+    padding: 0;
+  }
+}
+
+.navigate-back {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 10px 0px 10px;
+  i {
+    cursor: pointer;
+  }
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #E3E8ED;
+  height: 100%;
+  cursor: pointer;
+  position: relative;
+}
+
+.input-file{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 575px){
+  .container {
+    height: 200px;
+  }
+}

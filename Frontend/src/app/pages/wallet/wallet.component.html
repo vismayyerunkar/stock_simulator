@@ -1,0 +1,200 @@
+<app-header></app-header>
+
+<p-tabView>
+  <!-- Tab for ALL -->
+  <p-tabPanel header="ALL">
+    <div class="card-container">
+      <div class="mycard left-card">
+        <p-card header="Current">
+          <p class="m-0" style="color: green; font-size: 30px">
+            <b>₹ {{allCurrentPrice | number:'1.2-2'}}</b>
+          </p>
+        </p-card>
+      </div>
+      <div class="mycard right-card">
+        <p-card header="Invested">
+          <p class="m-0" style="color: gray; font-size: 30px">
+            <b>₹ {{allInvestedPrice | number:'1.2-2'}}</b>
+          </p>
+        </p-card>
+      </div>
+    </div>
+    <app-all></app-all>
+
+    <div class="my-app">
+      <div class="my-card card">
+        <div class="my-card__header card-header">
+          <h3 class="my-card__header-title card-title"><b>Stocks</b></h3>
+          <!-- <a class="my-card__header-link" href="#">See all →</a> -->
+        </div>
+        <div *ngFor="let stock of stocksData" class="my-card card">
+          <ul class="my-list list-group list-group-flush">
+            <li class="my-list-item list-group-item">
+              <div class="my-list-item__date">
+                <span class="my-list-item__date-day">28</span>
+                <span class="my-list-item__date-month">jul</span>
+              </div>
+              <div class="my-list-item__image">
+                <img
+                  class="stock-logo"
+                  src="https://assets-netstorage.groww.in/stock-assets/logos/GSTK543320.png"
+                  alt="{{ stock.name }} Logo"
+                />
+              </div>
+              <div class="my-list-item__text">
+                <h4 class="my-list-item__text-title">{{ stock.name }}</h4>
+                <p class="my-list-item__text-description">
+                  {{ stock.symbol }}
+                </p>
+              </div>
+
+              <div class="my-list-item__fee">
+                <span class="my-list-item__fee-delta">₹ {{ stock.price }}</span>
+                <span
+                  class="my-list-item__fee-currency"
+                  [class.green]="stock.changePercentage > 0"
+                  [class.red]="stock.changePercentage < 0"
+                >
+                  {{ stock.changePercentage }}</span
+                >
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </p-tabPanel>
+
+  <!-- Tab for Stocks -->
+  <p-tabPanel header="Stocks">
+    <div class="card-container">
+      <div class="mycard left-card">
+        <p-card header="Current">
+          <p class="m-0" style="color: green; font-size: 30px">
+            <b>₹ 32.5K</b>
+          </p>
+        </p-card>
+      </div>
+      <div class="mycard right-card">
+        <p-card header="Invested">
+          <p class="m-0" style="color: gray; font-size: 30px">
+            <b>₹ 28.23K</b>
+          </p>
+        </p-card>
+      </div>
+    </div>
+    <app-stocks></app-stocks>
+
+    <div class="my-app">
+      <div class="my-card card">
+        <div class="my-card__header card-header">
+          <h3 class="my-card__header-title card-title"><b>Stocks</b></h3>
+          <!-- <a class="my-card__header-link" href="#">See all →</a> -->
+        </div>
+        <div *ngFor="let stock of stocksData" class="my-card card">
+          <ul class="my-list list-group list-group-flush">
+            <li class="my-list-item list-group-item">
+              <div class="my-list-item__date">
+                <span class="my-list-item__date-day">28</span>
+                <span class="my-list-item__date-month">jul</span>
+              </div>
+              <div class="my-list-item__image">
+                <img
+                  class="stock-logo"
+                  src="https://assets-netstorage.groww.in/stock-assets/logos/GSTK543320.png"
+                  alt="{{ stock.name }} Logo"
+                />
+              </div>
+              <div class="my-list-item__text">
+                <h4 class="my-list-item__text-title">{{ stock.name }}</h4>
+                <p class="my-list-item__text-description">
+                  {{ stock.symbol }}
+                </p>
+              </div>
+
+              <div class="my-list-item__fee">
+                <span class="my-list-item__fee-delta">₹ {{ stock.price }}</span>
+                <span
+                  class="my-list-item__fee-currency"
+                  [class.green]="stock.changePercentage > 0"
+                  [class.red]="stock.changePercentage < 0"
+                >
+                  {{ stock.changePercentage }}</span
+                >
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </p-tabPanel>
+  <!-- Tab for Crypto -->
+
+  <p-tabPanel header="Crypto">
+    <div class="card-container">
+      <div class="mycard left-card">
+        <p-card header="Current">
+          <p class="m-0" style="font-size:30px" [ngStyle]="{'color': cryptoInvestedPrice > cryptoCurrentPrice ? 'red' : 'green'}">
+            <b>$ {{!loader ? "loading..." :  cryptoCurrentPrice | number:'1.3-3'}}</b>
+          </p>
+        </p-card>
+      </div>
+      <div class="mycard right-card">
+        <p-card header="Invested">
+          <p class="m-0" style="color: gray; font-size: 30px">
+            <b>$ {{cryptoInvestedPrice | number:'1.3-3'}}</b>
+          </p>
+        </p-card>
+      </div>
+    </div>
+    <div class="my-app">
+      <div class="my-card card">
+        <div class="my-card__header card-header">
+          <h3 class="my-card__header-title card-title"><b>Stocks</b></h3>
+          <!-- <a class="my-card__header-link" href="#">See all →</a> -->
+        </div>
+        
+
+        <div *ngIf="cryptoQuantityMap.size > 0">
+          <app-crypto [investedAmt]="cryptoInvestedPrice" [percentChange]="calculateGainLossPercent(cryptoInvestedPrice,cryptoCurrentPrice)" [currentValue]="cryptoCurrentPrice" [quantityMap]="cryptoQuantityMap"></app-crypto>
+        </div>
+
+
+        <div *ngFor="let stock of stocksData" class="my-card card">
+          <ul class="my-list list-group list-group-flush">
+            <li class="my-list-item list-group-item">
+              <div class="my-list-item__date">
+                <span class="my-list-item__date-day">28</span>
+                <span class="my-list-item__date-month">jul</span>
+              </div>
+              <div class="my-list-item__image">
+                <img
+                  class="stock-logo"
+                  src="https://assets-netstorage.groww.in/stock-assets/logos/GSTK543320.png"
+                  alt="{{ stock.name }} Logo"
+                />
+              </div>
+              <div class="my-list-item__text">
+                <h4 class="my-list-item__text-title">{{ stock.name }}</h4>
+                <p class="my-list-item__text-description">
+                  {{ stock.symbol }}
+                </p>
+              </div>
+
+              <div class="my-list-item__fee">
+                <span class="my-list-item__fee-delta">₹ {{ stock.price ?? "Loading..." }}</span>
+                <span
+                  class="my-list-item__fee-currency"
+                  [class.green]="stock.changePercentage > 0"
+                  [class.red]="stock.changePercentage < 0"
+                >
+                  {{ stock.changePercentage }}</span
+                >
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </p-tabPanel>
+</p-tabView>

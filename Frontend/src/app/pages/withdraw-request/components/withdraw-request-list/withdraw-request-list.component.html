@@ -1,0 +1,92 @@
+<app-header></app-header>
+<p-card class="withdraw-request-list">
+  <div class="flex flex-row justify-content-between align-items-center mb-3">
+    <h1 class="mb-0">Withdraw Requests</h1>
+  </div>
+  <p-table
+    [value]="withdrawList"
+    dataKey="id"
+    [rows]="limit"
+    [totalRecords]="totalCount"
+    [lazy]="true"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    styleClass="p-datatable-customers p-datatable-gridlines"
+    [paginator]="true"
+    (onPage)="paginate($event)"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  >
+    <ng-template pTemplate="caption">
+      <div class="grid">
+        <p-multiSelect 
+          placeholder="Status Filter"
+          [options]="statusOption"
+          [(ngModel)]="selectedStatus"
+          [style]="{ minWidth: '100%' }"
+          class="col-12 sm:col-6 xl:col-3"
+          (onChange)="filterChange()"
+        ></p-multiSelect>
+        <p-dropdown
+          placeholder="Assign To Filter"
+          [style]="{ minWidth: '100%' }"
+          class="col-12 sm:col-6 xl:col-3"
+          optionLabel="name"
+        ></p-dropdown>
+        <p-dropdown
+          placeholder="Sort By"
+          optionLabel="name"
+          [style]="{ minWidth: '100%' }"
+          class="col-12 sm:col-6 xl:col-3"
+        ></p-dropdown>
+        <p-button
+          label="Clear Filter"
+          class="clear col-12 sm:col-6 xl:col-3"
+          [style]="{
+            minWidth: '100%',
+            'background-color': 'white',
+            color: 'black'
+          }"
+          (click)="clearFilter()"
+        ></p-button>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Id</th>
+        <th>Transaction Id</th>
+        <th>Transaction Date</th>
+        <th>Amount</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-withdraw>
+      <tr>
+        <td>{{ withdraw.id }}</td>
+        <td>{{ withdraw.transaction_id }}</td>
+        <td>{{ withdraw.transaction_dtm | date }}</td>
+        <td>{{ withdraw.amount | number: '1.0-2' }}</td>
+        <td>{{ withdraw.status }}</td>
+        <td style="text-align: center">
+          <button
+            pButton
+            type="button"
+            icon="pi pi-info-circle"
+            class="p-button-text p-button-rounded p-button-sm"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td
+          colspan="10"
+          [style]="{ 'justify-content': 'center', 'text-align': 'center' }"
+        >
+          No Withdraw Request found.
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>
+<p-toast position="top-right"></p-toast>

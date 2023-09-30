@@ -1,0 +1,24 @@
+<div class="chart-container">
+  <p-chart type="doughnut" [data]="data" [options]="options"></p-chart>
+</div>
+<div class="labels-container" >
+  <div class="label-item" *ngFor="let obj of quantityMap | keyvalue">
+    <div class="color-box" [style.background-color]="tempBgColorsMap.get(obj.key)"></div>
+    <span>{{obj.key}} - {{obj.value}}</span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-content">
+    <div class="card-title">Current Value</div>
+    <div class="card-text">${{currentValue | number:'1.3-3'}}<span [ngStyle]="{'color': percentChange > 0 ? 'green' : 'red'}"> ({{percentChange | number:'1.2-2'}})</span></div>
+  </div>
+  <div class="card-content">
+    <div class="card-title">Invested</div>
+    <div class="card-text">${{investedAmt | number:'1.3-3'}}</div>
+  </div>
+  <div class="card-content">
+    <div class="card-title">P&amp;L</div>
+    <div class="card-text">${{(investedAmt * (percentChange/100)) | number:'1.3-3' }}<span [ngStyle]="{'color': percentChange > 0 ? 'green' : 'red'}">({{percentChange | number:'1.2-2'}})</span></div>
+  </div>
+</div>

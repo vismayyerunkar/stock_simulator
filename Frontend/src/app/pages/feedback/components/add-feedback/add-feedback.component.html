@@ -1,0 +1,52 @@
+<app-header></app-header>
+<div class="section">
+  <div class="navigate-back">
+    <i class="pi pi-angle-left" style="font-size: 2rem" (click)="navigateBack()"></i>
+    <h2>Add Feedback on Behalf of a User</h2>
+  </div>
+
+  <div class="grid p-fluid">
+    <div class="col-12 sm:col-6 lg:col-4">
+      <h3>Category</h3>
+      <p-multiSelect
+      optionLabel="header"
+      selectedItemsLabel="{0} columns selected"
+      placeholder="Category Filter"></p-multiSelect>
+    </div>
+    <div class="col-12 sm:col-6 lg:col-3">
+      <h3>Search and Select User</h3>
+      <p-multiSelect
+      optionLabel="header"
+      selectedItemsLabel="{0} columns selected"
+      placeholder=""></p-multiSelect>
+    </div>
+    <div class="col-12 sm:col-6 lg:col-7 xl:col-9">
+      <h3>Email</h3>
+      <span class="p-input-icon-left">
+        <i class="pi pi-envelope"></i>
+        <input type="text" pInputText placeholder="Email" />
+      </span>
+    </div>
+
+    <div class="col-12 sm:col-6 lg:col-5 xl:col-3">
+      <h3>Phone Number</h3>
+      <span class="p-input-icon-left">
+        <i class="pi pi-phone"></i>
+        <input type="text" pInputText placeholder="Phone Number" />
+      </span>
+    </div>
+
+    <div class="col-12">
+      <h3>Title</h3>
+      <input type="text" pInputText />
+    </div>
+
+    <div class="col-12">
+      <h3>Description</h3>
+      <textarea rows="6" [style]="{width: '100%'}" pInputText></textarea>
+    </div>
+  </div>
+  <div class="flex flex-row justify-content-end">
+    <p-button label="Save" routerLink="/feedback/list"></p-button>
+  </div>
+</div>

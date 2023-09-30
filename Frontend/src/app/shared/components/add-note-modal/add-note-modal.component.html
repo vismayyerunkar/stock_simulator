@@ -1,0 +1,22 @@
+<p-dialog
+  [header]="title"
+  [(visible)]="display"
+  [style]="{ width: '450px' }"
+  (onHide)="hideDialog()"
+  [modal]="true"
+>
+  <textarea
+    pInputTextarea
+    autofocus
+    [rows]="10"
+    [style]="{ width: '100%', 'font-size': '16px' }"
+    [(ngModel)]="value"
+  ></textarea>
+  <ng-template pTemplate="footer">
+    <p-button
+      label="Add"
+      (click)="submit()"
+      [disabled]="value.length == 0"
+    ></p-button>
+  </ng-template>
+</p-dialog>

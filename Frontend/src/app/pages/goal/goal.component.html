@@ -1,0 +1,135 @@
+<app-header></app-header>
+
+<div class="surface-section px-4 py-8 md:px-6 lg:px-8 text-center">
+  <div class="mb-3 font-bold text-3xl">
+    <span class="text-900">Set Goal. </span>
+    <span class="text-blue-600">Achieve More</span>
+  </div>
+  <div class="text-700 mb-6">
+    <h4>
+      Start Your Investing Journey With Us, Right Now. <br />Invest On Our Paper
+      Trading Platform To Achieve Your Actual Goal.
+    </h4>
+  </div>
+  <div class="grid">
+    <div class="col-12 md:col-4 mb-4 px-5">
+      <span
+        class="p-3 shadow-2 mb-3 inline-block surface-card"
+        style="border-radius: 10px"
+      >
+        <i class="pi pi-desktop text-4xl text-blue-500"></i>
+      </span>
+      <div class="text-900 text-xl mb-3 font-medium">Set Your Goal</div>
+      <span class="text-700 line-height-3"
+        >Enter The Details And Let Our AI Do The Magic...</span
+      >
+    </div>
+    <div class="col-12 md:col-4 mb-4 px-5">
+      <span
+        class="p-3 shadow-2 mb-3 inline-block surface-card"
+        style="border-radius: 10px"
+      >
+        <i class="pi pi-gift text-4xl text-blue-500"></i>
+      </span>
+      <div class="text-900 text-xl mb-3 font-medium">Get Your Coins</div>
+      <span class="text-700 line-height-3">
+        We Have Credited
+        <b>10 Lakh</b> Richin Tokens In Your Account.</span
+      >
+    </div>
+    <div class="col-12 md:col-4 mb-4 px-5">
+      <span
+        class="p-3 shadow-2 mb-3 inline-block surface-card"
+        style="border-radius: 10px"
+      >
+        <i class="pi pi-check-circle text-4xl text-blue-500"></i>
+      </span>
+      <div class="text-900 text-xl mb-3 font-medium">Easy To Trade</div>
+      <span class="text-700 line-height-3"
+        >To purchase and sell equities and cryptocurrencies, use the Richin
+        token.</span
+      >
+    </div>
+  </div>
+  <div class="flex flex-wrap gap-3 p-fluid">
+    <div class="flex-auto col-4">
+      <label for="amountInvested">Amount Invested</label>
+      <p-inputNumber
+        [(ngModel)]="Invested_Amount"
+        inputId="amountInvested"
+        mode="decimal"
+        [minFractionDigits]="2"
+        [maxFractionDigits]="5"
+        (ngModelChange)="InvestedAmountChange($event)"
+      ></p-inputNumber>
+    </div>
+    <div class="flex-auto col-4">
+      <label for="targetAmount">Target Amount</label>
+      <p-inputNumber
+        [(ngModel)]="Future_Value"
+        inputId="targetAmount"
+        mode="decimal"
+        [minFractionDigits]="2"
+        [maxFractionDigits]="5"
+        (ngModelChange)="GetFutureValue($event)"
+      ></p-inputNumber>
+    </div>
+    <div class="flex-auto col-4">
+      <label for="rateOfReturn">Number Of Years</label>
+      <p-inputNumber [(ngModel)]="No_Year" inputId="rateOfReturn" suffix=""  (ngModelChange)="GetNumberOfYear($event)">
+      </p-inputNumber>
+    </div>
+    <div style="width: 29vw; margin-right: auto;">
+      <label for="rateOfReturn">Rate of return</label>
+      <p-inputNumber [(ngModel)]="RateOfReturn" inputId="rateOfReturn" suffix=""  (ngModelChange)="GetRateOfReturn($event)">
+      </p-inputNumber>
+    </div>
+    <!-- <div class="flex-auto col-5">
+      <div class="flex-auto col-5">
+        <label id="risk-meter" for="goal">Select Goal Period </label>
+        <p-dropdown
+          [(ngModel)]="selectedGoalPeriod"
+          [options]="goalPeriodOptions"
+          optionLabel="label"
+          optionValue="value"
+          id="goal"
+        ></p-dropdown>
+      </div>
+    </div> -->
+    <div style="width:25vw">
+      <div class="risk-meter">
+        <label id="risk-meter" for="goal">Risk Meter</label>
+
+        <div
+          class="risk-meter-bar"
+          (mousedown)="startDragging($event)"
+          (mouseup)="stopDragging()"
+          (mousemove)="updateRiskMeterWidth($event)"
+        >
+          <div class="risk-meter-fill" [style.width.%]="riskMeterWidth"></div>
+        </div>
+        <div class="risk-levels">
+          <div class="risk-level low">Low</div>
+          <div class="risk-level medium">Medium</div>
+          <div class="risk-level high">High</div>
+        </div>
+
+        <!-- Dispay Risk Percentage -->
+        <div class="risk-percentage">
+          <span>{{ riskPercentage }}%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="Set-Goal">
+    <p-button
+      label="Set Goal"
+      styleClass="p-button-outlined p-button-secondary"
+      (click)="getNewGoal()"
+    ></p-button>
+    <!-- [routerLink]="['/goal-report']" -->
+  </div>
+</div>
+<p-toast></p-toast>
+
+<app-goal-assests [goalAssets] = "goalAssets" [goalDetails]="goalDetails" *ngIf="displayGoalAssets"></app-goal-assests>

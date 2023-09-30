@@ -1,0 +1,18 @@
+.card {
+  margin-top: 0em;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+h2,
+h3 {
+  margin-bottom: 0rem;
+  margin-inline-start: 3rem;
+}
+.mb-0 {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 10px 0px 10px;
+  i {
+    cursor: pointer;
+  }
+}

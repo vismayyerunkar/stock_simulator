@@ -1,0 +1,113 @@
+<app-header></app-header>
+<div class="section">
+  <div
+    class="flex flex-column md:flex-row md:justify-content-between md:align-items-center mb-2"
+  >
+    <div class="navigate-back">
+      <i
+        class="pi pi-angle-left"
+        style="font-size: 2rem"
+        (click)="navigateBack()"
+      ></i>
+      <h2>Support Request #{{ id }}</h2>
+    </div>
+    <div class="flex flex-row mb-3 md:mb-0">
+      <p-dropdown
+        placeholder="Select Staff Member"
+        style="margin-right: 2rem; width: 220px"
+        [options]="sr_List"
+        [(ngModel)]="selectedStaffMember"
+        optionLabel="name"
+        (onChange)="updateAssignee()"
+      ></p-dropdown>
+
+      <p-dropdown
+        placeholder="Select Status"
+        style="width: 200px"
+        [options]="statusList"
+        [(ngModel)]="selectedStatus"
+        (onChange)="updateStatus()"
+      ></p-dropdown>
+    </div>
+  </div>
+
+  <div class="grid p-fluid mt-2" *ngIf="supportRequest">
+    <div class="col-12 sm:col-6 xl:col-3">
+      <h3>Name: {{supportRequest.user.name}}</h3>
+    </div>
+    <div class="col-12 sm:col-6 xl:col-3">
+      <h3>Assigned To: {{selectedStaffMember.email}}</h3>
+    </div>
+    <div class="col-12 sm:col-6 xl:col-3">
+      <h3>Email: {{supportRequest.user.email}}</h3>
+    </div>
+
+    <div class="col-12 sm:col-6 xl:col-3">
+      <h3>Phone Number: {{supportRequest.user.phone_number}}</h3>
+    </div>
+
+    <div class="col-12">
+      <h3>Title</h3>
+      <input type="text" pInputText [(ngModel)]="supportRequest.title" disabled/>
+    </div>
+
+    <div class="col-12">
+      <h3>Description</h3>
+      <textarea rows="6" [style]="{ width: '100%' }" pInputText disabled
+      [(ngModel)]="supportRequest.description"></textarea>
+    </div>
+  </div>
+</div>
+
+<div class="grid p-fluid m-0 px-2 pb-3">
+  <div class="col-12 sm:col-6">
+    <p-card styleClass="notesCard">
+      <div class="flex flex-row justify-content-end">
+        <p-button
+          label="Add Note"
+          class="mb-3"
+          (click)="showNoteModal()"
+        ></p-button>
+      </div>
+      <p-card
+        [header]="note.note"
+        styleClass="note"
+        *ngFor="let note of noteList"
+      >
+        <h3>Added By: {{ note.user }}</h3>
+        <h3>Added On: {{ note.created_on | date }}</h3>
+      </p-card>
+    </p-card>
+  </div>
+
+  <div class="col-12 sm:col-6">
+    <div class="p-col p-d-flex p-ai-center p-jc-center">
+      <p-card styleClass="notesCard">
+        <div class="flex flex-row justify-content-end">
+          <p-button
+            label="Add Comment"
+            class="mb-3"
+            (click)="showCommentModal()"
+          ></p-button>
+        </div>
+        <p-card
+          [header]="comment.comment"
+          styleClass="comment"
+          *ngFor="let comment of commentList"
+        >
+          <h3>Added By: {{ comment.user }}</h3>
+          <h3>Added On: {{ comment.created_on | date }}</h3>
+        </p-card>
+      </p-card>
+    </div>
+  </div>
+</div>
+
+<app-add-note-modal
+  [title]="dialogTitle"
+  [type]="modalType"
+  (note)="addNote($event)"
+  (comment)="addComment($event)"
+></app-add-note-modal>
+
+<p-toast position="top-right"></p-toast>

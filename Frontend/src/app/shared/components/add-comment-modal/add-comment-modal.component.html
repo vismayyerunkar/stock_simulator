@@ -1,0 +1,18 @@
+<p-dialog
+  header="Add Comment"
+  [(visible)]="display"
+  [style]="{ width: '450px' }"
+  (onHide)="hideDialog()"
+  [modal]="true"
+>
+  <textarea
+    pInputTextarea
+    autofocus
+    [rows]="10"
+    [style]="{ width: '100%', 'font-size': '16px' }"
+    [(ngModel)]="comment"
+  ></textarea>
+  <ng-template pTemplate="footer">
+    <p-button label="Update" (click)="onSubmit()"></p-button>
+  </ng-template>
+</p-dialog>

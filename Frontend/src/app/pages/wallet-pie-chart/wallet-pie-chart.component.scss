@@ -1,0 +1,81 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .chart-container {
+    width: 35%;
+    padding: 1rem;
+    margin-left: 5rem;
+  }
+
+  .labels-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .label-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .color-box {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.5rem;
+  }
+
+  .card-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .card {
+    background-color: var(--gray-200);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-right: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50rem;
+    height: 10rem;
+
+    .card-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      background-color: white;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+      .card-title {
+        font-weight: bold;
+        font-size: 0.8rem;
+      }
+
+      .card-text {
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+
+        .green {
+          color: var(--green-500);
+          margin-left: 0.3rem;
+        }
+
+        .red {
+          color: var(--red-500);
+          margin-left: 0.3rem;
+        }
+      }
+    }
+  }
+}

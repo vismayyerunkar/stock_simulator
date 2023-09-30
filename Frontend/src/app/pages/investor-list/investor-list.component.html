@@ -1,0 +1,119 @@
+<app-header></app-header>
+<p-table
+  styleClass="p-datatable-gridlines p-datatable-sm"
+  [value]="investorList"
+  dataKey="id"
+  [rows]="limit"
+  [first]="offset"
+  [totalRecords]="totalCount"
+  [lazy]="true"
+  [showCurrentPageReport]="true"
+  [rowsPerPageOptions]="[10, 25, 50]"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [paginator]="true"
+  (onPage)="paginate($event)"
+  class="investor-table"
+>
+  <ng-template pTemplate="caption">
+    <div class="flex flex-row justify-content-between align-items-center">
+      <h1 class="m-0">Investors</h1>
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input
+          type="text"
+          pInputText
+          placeholder="Search"
+          [(ngModel)]="searchTerm"
+          (keyup)="onSearchInvestor()"
+        />
+      </span>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Lead Status</th>
+      <th>Contact Num</th>
+      <th>Email</th>
+      <th>G</th>
+      <th>Profile Status</th>
+      <th>Last Comment</th>
+      <th>Manager</th>
+      <th></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-investor>
+    <tr>
+      <td>{{ investor.user_id }}</td>
+      <td>
+        <div style="display: flex; align-items: center">
+          <p-avatar
+            [image]="investor.profile_url"
+            severity="danger"
+            styleClass="mr-2"
+            size="small"
+          ></p-avatar>
+          <span>{{ investor.name | titlecase }}</span>
+        </div>
+      </td>
+      <td>
+        <span>{{ investor.lead_status }}</span>
+        <button
+          pButton
+          type="button"
+          icon="pi pi-pencil"
+          class="p-button-text p-button-rounded p-button-sm"
+          (click)="openLeadStatusPopUp(investor)"
+        ></button>
+      </td>
+      <td>{{ investor.mobile_number }}</td>
+      <td>{{ investor.email }}</td>
+      <td>{{ investor.gender | slice : 0 : 1 }}</td>
+      <td>
+        {{ investor.profile_completion_status
+        }}<button
+          pButton
+          type="button"
+          icon="pi pi-pencil"
+          class="p-button-text p-button-rounded p-button-sm"
+          (click)="openProfileCompletionStatusPopUp(investor)"
+        ></button>
+      </td>
+      <td>
+        <span class="tooltip"
+          >{{ investor.last_comment | slice : 0 : 20 }}
+          <span class="tooltiptext">{{ investor.last_comment }}</span>
+        </span>
+        <button
+          pButton
+          type="button"
+          icon="pi pi-pencil"
+          class="p-button-text p-button-rounded p-button-sm"
+          (click)="openAddCommentPopUp(investor)"
+        ></button>
+      </td>
+      <td>{{ investor.manager }}</td>
+      <td>
+        <button
+          pButton
+          type="button"
+          icon="pi pi-info-circle"
+          class="p-button-text p-button-rounded p-button-sm"
+          [routerLink]="'/investor-details/' + investor.id"
+        ></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+<p-menu #action [popup]="true" [model]="items"></p-menu>
+<p-toast position="top-right"></p-toast>
+
+<app-update-lead-status-modal
+  (submit)="updateLeadStatusOnSubmit($event)"
+></app-update-lead-status-modal>
+
+<app-add-comment-modal
+  (submit)="addCommentOnSubmit($event)"
+></app-add-comment-modal>

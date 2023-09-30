@@ -1,0 +1,18 @@
+<p-dialog
+  [header]="type"
+  [(visible)]="display"
+  [style]="{ width: '450px' }"
+  (onHide)="hideDialog()"
+  [modal]="true"
+>
+  <input
+    type="text"
+    pInputText
+    [placeholder]="label"
+    [style]="{ width: '100%' }"
+    [(ngModel)]="lead_status"
+  />
+  <ng-template pTemplate="footer">
+    <p-button label="Update" (click)="onSubmit()"></p-button>
+  </ng-template>
+</p-dialog>

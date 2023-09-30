@@ -1,0 +1,69 @@
+<p-sidebar
+  [(visible)]="visibleSidebar"
+  [baseZIndex]="10000"
+  [showCloseIcon]="false"
+>
+  <div class="flex flex-column">
+    <div
+      class="menu-item"
+      routerLink="/dashboard"
+      routerLinkActive="menu-active"
+    >
+      <span class="highlight"></span>
+      <span class="menu-item-name">Dashboard</span>
+    </div>
+    <div
+      class="menu-item"
+      routerLink="/investor-list"
+      routerLinkActive="menu-active"
+    >
+      <span class="highlight"></span>
+      <span class="menu-item-name">Investors</span>
+    </div>
+    <div class="menu-item" routerLink="/assets" routerLinkActive="menu-active">
+      <span class="highlight"></span>
+      <span class="menu-item-name">Assets</span>
+    </div>
+    <div
+      class="menu-item"
+      routerLink="/fd-investments"
+      routerLinkActive="menu-active"
+    >
+      <span class="highlight"></span>
+      <span class="menu-item-name">FD Investments</span>
+    </div>
+    <div
+      class="menu-item"
+      routerLink="/sip-investments"
+      routerLinkActive="menu-active"
+    >
+      <span class="highlight"></span>
+      <span class="menu-item-name">SIP Investments</span>
+    </div>
+    <div
+      class="menu-item"
+      routerLink="/feedback"
+      routerLinkActive="menu-active"
+    >
+      <span class="highlight"></span>
+      <span class="menu-item-name">Feedbacks</span>
+    </div>
+    <div
+      class="menu-item"
+      routerLink="/support-requests"
+      routerLinkActive="menu-active"
+    >
+      <span class="highlight"></span>
+      <span class="menu-item-name">Support Requests</span>
+    </div>
+    <div
+      class="menu-item"
+      routerLink="/withdraw"
+      routerLinkActive="menu-active"
+    >
+      <span class="highlight"></span>
+      <span class="menu-item-name">Withdraw Requests</span>
+    </div>
+  </div>
+</p-sidebar>
+<i class="pi pi-bars" (click)="visibleSidebar = true"></i>

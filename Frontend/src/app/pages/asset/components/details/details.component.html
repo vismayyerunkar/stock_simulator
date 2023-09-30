@@ -1,0 +1,43 @@
+<p-card class="card" *ngIf="asset">
+  <div class="grid">
+    <div class="col-6"><b>Property</b></div>
+    <div class="col-6"><b>Value</b></div>
+
+    <div class="col-6">Short Description</div>
+    <div class="col-6">{{asset.short_description}}</div>
+
+    <div class="col-6">Description</div>
+    <div class="col-6">{{asset.description}}</div>
+
+    <div class="col-6">Interest Rate</div>
+    <div class="col-6">{{asset.interest_rate | number: '1.0-2'}}%</div>
+
+    <div class="col-6">Minimum Investment</div>
+    <div class="col-6">Rs. {{asset.minimum_investment | number: '1.2'}}</div>
+
+    <div class="col-6">Repayment Frequency</div>
+    <div class="col-6">{{asset.repayment_frequency}}</div>
+
+    <div class="col-6">Tenure</div>
+    <div class="col-6">{{asset.tenure}}</div>
+    
+    <div class="col-6">Tenure Type</div>
+    <div class="col-6">{{asset.tenure_type}}</div>
+
+    <div class="col-6">Secured</div>
+    <div class="col-6">{{asset.is_secured ? 'Yes' : 'No'}}</div>
+
+    <div class="col-6">Invested Amount</div>
+    <div class="col-6">Rs. {{asset.invested_amount | number: '1.2'}}</div>
+
+    <div class="col-6">Investor Count</div>
+    <div class="col-6">{{asset.investor_count}}</div>
+
+    <div class="col-6">Tag</div>
+    <div class="col-6">{{asset.tag}}</div>
+  </div>
+  <div class="grid mt-0" *ngFor="let item of asset.additional_properties | keyvalue">
+    <div class="col-6">{{item.key}}</div>
+    <div class="col-6">{{item.value}}</div>
+  </div>
+</p-card>

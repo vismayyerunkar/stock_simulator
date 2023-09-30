@@ -1,0 +1,89 @@
+<div class="grid">
+  <div class="col-1">
+    <p-image
+      src="https://img.freepik.com/free-vector/privacy-policy-concept-illustration_114360-7853.jpg?w=740&t=st=1694108575~exp=1694109175~hmac=8ec02f605c4479bbee498ac5e369527a8ce210741515f15ca76be2b4e93c1f8b"
+      alt="Image"
+      height="100%"
+      width="100%"
+    ></p-image>
+  </div>
+  <form [formGroup]="signupForm" class="col-2">
+    <div class="col-6">
+      <h3><b>Member Signup</b></h3>
+      <span class="p-input-icon-left">
+        <i class="pi pi-user"></i>
+        <input
+          type="text"
+          pInputText
+          formControlName="name"
+          placeholder="Name"
+          style="width: 200%"
+        />
+      </span>
+    </div>
+    <div class="col-12">
+      <!-- Add name and phone input fields horizontally parallel to each other -->
+      <div class="col-6" style="display: flex">
+        <div style="flex: 1">
+          <span class="p-input-icon-left">
+            <i class="pi pi-envelope"></i>
+            <input
+              type="text"
+              pInputText
+              formControlName="email"
+              placeholder="Email"
+              style="width: 100%"
+            />
+          </span>
+        </div>
+        <div style="flex: 1">
+          <span class="p-input-icon-left" style="margin-left: 2rem">
+            <i class="pi pi-phone"></i>
+            <input
+              type="text"
+              pInputText
+              formControlName="phone"
+              placeholder="Phone"
+              style="width: 100%"
+            />
+          </span>
+        </div>
+      </div>
+      <div class="col-6">
+        <span class="p-input-icon-left">
+          <i class="pi pi-lock"></i>
+          <input
+            type="password"
+            pInputText
+            formControlName="password"
+            placeholder="Enter Password"
+            style="width: 200%"
+          />
+        </span>
+      </div>
+      <div class="col-6">
+        <span class="p-input-icon-left">
+          <i class="pi pi-lock"></i>
+          <input
+            type="password"
+            pInputText
+            formControlName="rpassword"
+            placeholder="Confirm Password"
+            style="width: 200%"
+          />
+        </span>
+      </div>
+    </div>
+    <div class="col-12">
+      <button
+        pButton
+        pRipple
+        type="button"
+        label="Signup"
+        class="p-button-rounded"
+        (click)="signup()"
+      ></button>
+    </div>
+  </form>
+</div>
+<p-toast position="top-right"></p-toast>

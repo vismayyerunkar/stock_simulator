@@ -1,0 +1,242 @@
+/* Style for the tooltip/card */
+.profile-tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+#logout {
+  width: 100%;
+}
+#logo {
+  margin: 0 1rem 0 1rem;
+  margin-top: 2rem !important;
+}
+#wallet {
+  cursor: pointer;
+}
+
+.button-container {
+  margin-top: 1rem;
+}
+
+.tooltip-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 4px;
+  z-index: 1;
+  top: 100%;
+  right: 0;
+  width: 250px; /* Adjust the width as needed */
+
+  #name {
+    margin-bottom: 10px;
+    font-size: large;
+  }
+
+  #fund {
+    color: green;
+  }
+}
+
+.search-list-item {
+  padding: 5px;
+  margin-bottom: 2px;
+  border-radius: 7px;
+  background-color: #e7e7e7;
+  width: 210px;
+}
+
+.search-holder {
+  // background-color:red;
+  margin-right: 100px !important;
+}
+
+/* Show the tooltip/card on hover */
+.profile-tooltip:hover .tooltip-content {
+  display: block;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  /* Adjust tooltip/card width for smaller screens */
+  .tooltip-content {
+    width: 100%;
+    max-width: 300px; /* Adjust the max-width as needed */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .tooltip-content {
+    padding: 10px;
+  }
+
+  #search {
+    display: none;
+  }
+}
+
+.tooltip-content.active {
+  display: flex;
+}
+
+.profile-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#logout {
+  width: auto;
+  margin-left: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+/* Style for the tooltip/card */
+.profile-tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+
+  @media screen and (max-width: 768px) {
+    text-align: left; /* Align the tooltip to the left */
+  }
+}
+
+#logout {
+  width: auto;
+  margin-left: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.tooltip-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 4px;
+  z-index: 1;
+  top: 100%;
+  right: 0;
+  width: 250px; /* Increase the width as needed */
+
+  #name {
+    margin-bottom: 10px;
+    font-size: large;
+  }
+  #fund {
+    color: green;
+  }
+}
+
+/* Show the tooltip/card on hover */
+.profile-tooltip:hover .tooltip-content {
+  display: block;
+}
+/* Style the search input */
+#search {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none; /* Remove default input focus outline */
+  flex: 1; /* Allow the input to grow and take available space */
+}
+
+/* Style the wallet icon */
+#wallet {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* Style the profile tooltip */
+.profile-tooltip {
+  display: flex;
+  align-items: center; /* Vertically align items */
+  cursor: pointer;
+}
+
+/* Additional styles for the tooltip content (if needed) */
+
+/* Adjust the spacing between items */
+.search-wallet-profile-container {
+  display: flex; /* Use flexbox to arrange items horizontally */
+  align-items: center; /* Vertically align items to the center */
+  gap: 2rem; /* Add spacing between items */
+}
+
+/* Container for the search bar and results */
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 300px; /* Adjust as needed */
+  font-family: Arial, sans-serif; /* Specify your preferred font */
+}
+
+/* Search input */
+#search {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none; /* Remove default input focus outline */
+}
+
+/* Search results dropdown */
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: none; /* Initially hidden */
+  z-index: 1;
+}
+
+/* Style the list items */
+.search-list-item {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #e0e0e0; /* Hover background color */
+  }
+}
+
+/* Show the results when input is focused */
+#search:focus + .search-results {
+  display: block;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  /* Adjust tooltip/card width for smaller screens */
+  .tooltip-content {
+    width: 100%;
+    max-width: 300px; /* Adjust the max-width as needed */
+  }
+
+  /* Further adjustments for smaller screens */
+  .tooltip-content {
+    padding: 10px; /* Reduce padding for smaller screens */
+  }
+}

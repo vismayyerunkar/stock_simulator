@@ -1,0 +1,266 @@
+.my-app__body {
+  padding-top: 1.875rem;
+  padding-bottom: 1.875rem;
+}
+
+/* My card */
+.my-card:not(:last-child) {
+  margin-bottom: 1.875rem;
+}
+
+.my-card__header {
+  display: flex;
+  padding: 1.5rem 1.875rem;
+  border-width: 0 0 1px;
+  /* border-bottom: 1px solid #eaedf3; */
+  border-color: rgba(0, 0, 0, 0.125);
+  background: none;
+}
+
+.my-card__header-title {
+  flex: 1;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.my-card__header-link {
+  color: #9ea0a5;
+  /* 14px is default font size */
+}
+
+.my-card__header-link:hover,
+.my-card__header-link:focus {
+  color: #9ea0a5;
+}
+
+.my-card__body {
+  padding: 1.5rem 1.875rem;
+}
+
+/* My list */
+.my-list-item {
+  display: flex;
+  padding: 1rem 1.875rem;
+}
+
+.my-list-item__date,
+.my-list-item__text,
+.my-list-item__fee {
+  display: flex;
+  flex-direction: column;
+}
+
+.my-list-item__date {
+  flex-direction: column-reverse;
+  margin-right: 25px;
+  color: #9ea0a5;
+}
+
+.my-list-item__date-day {
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.my-list-item__date-month {
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  text-transform: uppercase;
+}
+
+.my-list-item__text {
+  flex: 1;
+}
+
+.my-list-item__text-title {
+  margin: 0 0 7px;
+  /* 14px is default font size */
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.my-list-item__text-description {
+  margin: 0;
+  color: #9ea0a5;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.my-list-item__fee {
+  text-align: right;
+}
+
+.my-list-item__fee-delta {
+  color: black;
+  /* 14px is default font size */
+  font-weight: 500;
+  margin-right: 3rem;
+}
+
+.my-list-item__fee-currency {
+  color: #9ea0a5;
+  font-size: 12px;
+  margin-right: 3rem;
+}
+
+/* My inline-list */
+.my-list-inline li:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+/* My dl (definition list */
+@media (min-width: 992px) {
+  .my-dl dt {
+    float: left;
+    color: #9ea0a5;
+    font-weight: 400;
+  }
+
+  .my-dl dd {
+    text-align: right;
+  }
+}
+
+/* My typography */
+.my-text-headline {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.my-text-overline {
+  margin-bottom: 0.75rem;
+  color: #9ea0a5;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/* Divider */
+.my-divider {
+  margin: 1.25rem 0;
+}
+
+/* Input */
+.my-input {
+  max-width: 186px;
+}
+
+.my-select {
+  border-color: #d8dce6;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  font-size: 14px;
+}
+
+/* Bootstrap custom fixes */
+@media (max-width: 1199px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+.my-alert {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.875rem;
+  padding-top: 0.937rem;
+  padding-bottom: 0.937rem;
+  border: none;
+  box-shadow: none;
+}
+
+.my-alert.alert-info {
+  background-color: #1665d8;
+  color: #fff;
+}
+
+.my-alert__icon {
+  margin-right: 1.25rem;
+}
+
+/* List icon */
+.list__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 40px;
+  border: 1px solid #e2e5ed;
+  border-radius: 0.25rem;
+}
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+// ... (your existing styles)
+
+.my-list-item__image {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.my-list-item__image img {
+  width: 40px; // Adjust the width as needed
+  height: 40px; // Adjust the height as needed
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: 15px;
+  margin-right: 20px; // Adjust the margin as needed
+}
+
+.mycard {
+  flex: 1;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 1.25rem; /* Increase font size */
+}
+
+.left-card {
+  background-color: #f9f9f9;
+  color: #44c790; /* Green color for amount */
+  font-weight: 4000;
+}
+
+.right-card {
+  background-color: #fff;
+  color: #e74c3c; /* Red color for amount */
+}
+
+.card-container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.card-container .mycard {
+  flex: 1;
+}
+
+.card__insights {
+  margin-top: 2rem;
+}
+
+.card__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.date svg {
+  margin-left: 5px;
+  height: 1rem;
+  width: 1rem;
+}
+
+.table {
+  margin-top: 2rem;
+}
+
+

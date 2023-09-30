@@ -1,0 +1,128 @@
+<app-header></app-header>
+<p-card class="support-request-list">
+  <div class="flex flex-row justify-content-between align-items-center mb-3">
+    <h1 class="mb-0">Support Requests</h1>
+  </div>
+  <p-table
+    [value]="supportRequestList"
+    dataKey="id"
+    [rows]="limit"
+    [totalRecords]="totalCount"
+    [lazy]="true"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    styleClass="p-datatable-customers p-datatable-gridlines"
+    [paginator]="true"
+    (onPage)="paginate($event)"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  >
+    <ng-template pTemplate="caption">
+      <div class="grid">
+        <p-dropdown
+          placeholder="Category Filter"
+          optionLabel="category"
+          [options]="categoryOption"
+          [(ngModel)]="selectedCategory"
+          [style]="{ minWidth: '275px' }"
+          class="col-12 sm:col-6 xl:col-3"
+          (onChange)="filterChange()"
+        ></p-dropdown>
+        <div class="col-12 sm:col-6 xl:col-3">
+          <p-calendar
+            [(ngModel)]="selectedDate"
+            selectionMode="range"
+            [readonlyInput]="true"
+            inputId="range"
+            [style]="{ width: '100%' }"
+            placeholder="Select Date Range"
+            (onSelect)="changeFilterDate()"
+            [showIcon]="true"
+          ></p-calendar>
+        </div>
+        <p-dropdown
+          placeholder="Sort By"
+          optionLabel="name"
+          [options]="sortOption"
+          [(ngModel)]="selectedSort"
+          [style]="{ minWidth: '275px' }"
+          class="col-12 sm:col-6 xl:col-3"
+          (onChange)="filterChange()"
+        ></p-dropdown>
+        <p-button
+          label="Clear Filter"
+          class="clear col-12 sm:col-6 xl:col-3"
+          [style]="{
+            minWidth: '270px',
+            'background-color': 'white',
+            color: 'black'
+          }"
+          (click)="clearFilter()"
+        ></p-button>
+        <p-dropdown
+          placeholder="Status Filter"
+          [options]="statusOption"
+          [(ngModel)]="selectedStatus"
+          [style]="{ minWidth: '275px' }"
+          class="col-12 sm:col-6 xl:col-3"
+          (onChange)="filterChange()"
+        ></p-dropdown>
+        <p-dropdown
+          placeholder="Assign To Filter"
+          [style]="{ minWidth: '275px' }"
+          class="col-12 sm:col-6 xl:col-3"
+          [options]="sr_List"
+          [(ngModel)]="selectedStaffMember"
+          optionLabel="name"
+          (onChange)="filterChange()"
+        ></p-dropdown>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>id</th>
+        <th>User Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Number</th>
+        <th>Category</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-supportrequest>
+      <tr>
+        <td>{{ supportrequest.id }}</td>
+        <td>{{ supportrequest.user.id }}</td>
+        <td>{{ supportrequest.user.name }}</td>
+        <td>{{ supportrequest.user.email }}</td>
+        <td>{{ supportrequest.user.phone_number }}</td>
+        <td>{{ supportrequest.category.category }}</td>
+        <td>{{ supportrequest.title }}</td>
+        <td>{{ supportrequest.description }}</td>
+        <td>{{ supportrequest.status }}</td>
+        <td>
+          <button
+            pButton
+            type="button"
+            icon="pi pi-info-circle"
+            class="p-button-text p-button-rounded p-button-sm"
+            [routerLink]="'/support-requests/list/' + supportrequest.id"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td
+          colspan="10"
+          [style]="{ 'justify-content': 'center', 'text-align': 'center' }"
+        >
+          No Support Request found.
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>
+<p-toast position="top-right"></p-toast>

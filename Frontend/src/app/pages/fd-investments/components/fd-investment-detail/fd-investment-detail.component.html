@@ -1,0 +1,84 @@
+<app-header></app-header>
+<div class="card">
+  <div class="flex flex-row justify-content-between align-items-center mb-1">
+    <h1 class="mb-0">
+      <i
+        class="pi pi-angle-left"
+        style="font-size: 2rem"
+        (click)="navigateBack()"
+      ></i
+      ><Span>FD Invetsments # {{ id }}</Span>
+    </h1>
+  </div>
+  <p-card class="income">
+    <div class="grid">
+      <div class="col-4">
+        <h3>
+          Committed Principal Sum:
+          {{
+            investorDetails.investment_summary.committed_principal_sum
+              | number : "1.2"
+          }}
+        </h3>
+      </div>
+      <div class="col-4">
+        <h3>
+          Expected Minimum Repayment:
+          {{
+            investorDetails.investment_summary.expected_minimum_repayment
+              | number : "1.2"
+          }}
+        </h3>
+      </div>
+      <div class="col-4">
+        <h3>
+          Paid Repayment Sum :
+          {{
+            investorDetails.investment_summary.paid_repayment_sum
+              | number : "1.2"
+          }}
+        </h3>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="col-4">
+        <h3>
+          Unutilized Amount :
+          {{ investorDetails.unutilized_amount | number : "1.2" }}
+        </h3>
+      </div>
+      <div class="col-4">
+        <h3>
+          Expected ROI : {{ investorDetails.expected_roi | number : "1.2" }}
+        </h3>
+      </div>
+      <div class="col-4">
+        <h3>
+          Tenure : {{ investorDetails.tenure }} {{ investorDetails.tenure_type[0] }}
+        </h3>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="col-4">
+        <h3>Status : {{ investorDetails.status }}</h3>
+      </div>
+      <div class="col-4">
+        <h3>Maturity Date : {{ investorDetails.maturity_date | date }}</h3>
+      </div>
+    </div>
+    <hr />
+    <p-tabView>
+      <p-tabPanel header="Investment Utilization">
+        <ng-template pTemplate="content">
+          <app-fd-investment-utilization></app-fd-investment-utilization>
+        </ng-template>
+      </p-tabPanel>
+
+      <p-tabPanel header="Invest in Asset">
+        <ng-template pTemplate="content">
+          <app-investable-asset-list></app-investable-asset-list>
+        </ng-template>
+      </p-tabPanel>
+    </p-tabView>
+  </p-card>
+</div>

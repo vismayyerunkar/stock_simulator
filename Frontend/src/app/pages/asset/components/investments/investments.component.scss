@@ -1,0 +1,10 @@
+h2 {
+    margin-bottom: 0px;
+}
+
+::ng-deep{
+    .investment .p-card-body {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+}

@@ -1,0 +1,26 @@
+<app-header></app-header>
+<div class="chat-container">
+  <div class="chat-messages"></div>
+  <div class="chat-input">
+    <input
+      pInputText
+      pKeyFilter="int"
+      placeholder="Send a message"
+      [(ngModel)]="value"
+    />
+
+    <p-button
+      label="Send"
+      (click)="sendMessage()"
+      styleClass="p-button-outlined"
+    ></p-button>
+  </div>
+  <div class="instructions">
+    <p-tabView>
+      <p-tabPanel header="Instructions">
+        <p>Enter integers in the input field and click Send.</p>
+        <p>This chat is for string-based interactions.yes</p>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+</div>

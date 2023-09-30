@@ -1,0 +1,322 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap");
+
+:root {
+  --primary: #323232;
+  --light-bg: #f4f4f4;
+  --border: #eee;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+body {
+  background-color: var(--light-bg);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary);
+}
+
+.card {
+  width: 70%;
+  max-width: 1100px;
+  background-color: #fff;
+  padding: 3rem;
+}
+
+.card__header {
+  display: flex;
+  align-items: center;
+  margin-top: -15px;
+}
+
+.card__profile img {
+  border-radius: 50%;
+  height: 5rem;
+  width: 5rem;
+  object-fit: cover;
+}
+
+.card__name {
+  margin-left: 1.25rem;
+}
+
+.card__handle {
+  display: flex;
+  align-items: center;
+  margin-top: 3px;
+}
+
+.card__button button {
+  display: flex;
+  align-items: center;
+  font-size: 1.05rem;
+  background-color: var(--primary);
+  color: white;
+  font-weight: bold;
+  border: none;
+  height: 40px;
+  width: 100px;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.card__button button:active {
+  transform: scale(0.96);
+}
+
+.card__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+span.circle {
+  height: 3px;
+  width: 3px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 8px;
+}
+
+.border {
+  border-radius: 5px;
+  height: 2px;
+  background-color: var(--border);
+  border: none;
+  margin: 1.25rem 0;
+}
+
+.navlinks {
+  list-style: none;
+  display: flex;
+  margin-bottom: 1.25rem;
+}
+
+.navlinks li {
+  opacity: 0.5;
+  transition: opacity 200ms ease-in-out;
+  cursor: pointer;
+}
+
+.navlinks li:first-child {
+  opacity: 1;
+  font-weight: bold;
+}
+
+.navlinks li:hover {
+  opacity: 1;
+}
+
+.navlinks li + li {
+  margin-left: 20px;
+}
+
+.date {
+  display: flex;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.date svg {
+  margin-left: 5px;
+  height: 1rem;
+  width: 1rem;
+}
+
+.heading {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 740px) {
+  .card {
+    width: 90%;
+  }
+  .navlinks {
+    display: none;
+  }
+}
+
+@media (max-width: 545px) {
+  .card__button button {
+    width: 40px;
+    justify-content: center;
+  }
+  .card__button button span {
+    display: none;
+  }
+}
+/* Styles for the New Listing / IPO section */
+.new-listing-section {
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+  .title {
+    margin-bottom: 1rem;
+    h1 {
+      font-size: 1.5rem;
+      color: #333;
+    }
+  }
+
+  .controls {
+    display: flex;
+    align-items: center;
+
+    input[type="text"] {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-right: 1rem;
+      flex: 1;
+    }
+
+    p-dropdown {
+      width: 200px;
+    }
+  }
+
+  .ipo-table {
+    width: 80%;
+    margin: 0 auto;
+
+    th,
+    td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+    }
+
+    th {
+      background-color: #f5f5f5;
+    }
+
+    img {
+      width: 20%;
+      border-radius: 5px;
+    }
+
+    .change-percentage-positive {
+      color: #00aa00;
+    }
+
+    .change-percentage-negative {
+      color: #ff0000;
+    }
+  }
+}
+
+/* Additional styles */
+.ipo-list {
+  margin: 0 4rem; /* Add margin from left and right */
+  padding: 2rem 0; /* Add top and bottom padding */
+}
+
+.ipo-table {
+  width: 80%; /* Set table width to 80% */
+}
+
+/* Reduce the image size */
+.ipo-table img {
+  max-width: 40px; /* Adjust the size as needed */
+  max-height: 40px; /* Adjust the size as needed */
+}
+
+/* Add some spacing between cells */
+.ipo-table th,
+.ipo-table td {
+  padding: 0.75rem 1rem;
+}
+
+/* Rest of your CSS */
+.change-percentage-positive {
+  color: green;
+  font-size: large;
+  font-weight: 700;
+}
+.table {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.change-percentage-negative {
+  color: red;
+  font-size: large;
+  font-weight: 700;
+}
+
+/* Add these classes for styling */
+.controls {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.filter-input {
+  margin-right: 1rem;
+}
+
+/* Adjust styling of the dropdown as needed */
+.ui-dropdown {
+  min-width: 150px; /* Adjust as needed */
+}
+.card-container {
+  display: flex;
+  gap: 2rem; /* Adjust the gap as needed */
+}
+.mycard {
+  flex: 1;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 1.25rem; /* Increase font size */
+}
+
+.left-card {
+  background-color: #f9f9f9;
+  color: #44c790; /* Green color for amount */
+  font-weight: 4000;
+}
+
+.right-card {
+  background-color: #fff;
+  color: #e74c3c; /* Red color for amount */
+}
+
+.card-container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.card-container .mycard {
+  flex: 1;
+}
+
+.card__insights {
+  margin-top: 2rem;
+}
+
+.card__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.date svg {
+  margin-left: 5px;
+  height: 1rem;
+  width: 1rem;
+}
+
+.table {
+  margin-top: 2rem;
+}

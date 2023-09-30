@@ -1,0 +1,36 @@
+<div class="card">
+  <div class="grid">
+    <div class="col-5 flex align-items-center justify-content-center" *ngIf="investorDetail">
+      <div>
+        <p-image *ngIf="!investorDetail.user.profile_url"
+          src="https://tse4.mm.bing.net/th?id=OIP.hZzMLxjri7V-56b44UAnegHaHa&pid=Api&P=0"
+          alt="Image"
+          width="150"
+          height="150"
+        ></p-image>
+        <p-image *ngIf="investorDetail.user.profile_url"
+          [src]="investorDetail.user.profile_url"
+          alt="Image"
+          width="auto"
+          height="150"
+          [style]="{'max-width': '150px'}"
+        ></p-image>
+      </div>
+      <div class="p-col-1">
+        <h3>Id: {{investorDetail.user.id}}</h3>
+        <h3>Email: {{investorDetail.user.email}}</h3>
+        <h3>Contact Number: {{investorDetail.user.mobile_number}}</h3>
+        <h3>Name: {{investorDetail.user.name}}</h3>
+        <h3>Registered On : {{investorDetail.info.created_on | date:'dd MMM yyyy'}}</h3>
+      </div>
+    </div>
+    <div class="col-2">
+      <p-divider layout="vertical"> </p-divider>
+    </div>
+    <div class="col-5 mt-3">
+      <div class="p-col-2">
+        <h3 *ngFor="let item of investmentSummary | keyvalue">{{refactorKey(item.key) | titlecase}}: {{item.value}}</h3>
+      </div>
+    </div>
+  </div>
+</div>

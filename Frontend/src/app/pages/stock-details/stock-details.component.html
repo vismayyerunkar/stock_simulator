@@ -1,0 +1,82 @@
+<app-header></app-header>
+<body>
+  <div class="app-container">
+    <div class="trading-details-container">
+      <div class="trading-graph">
+        <div id="trading-chart"></div>
+      </div>
+      <div class="trade-details">
+        <div class="stock-info">
+          <img
+            src="https://assets-netstorage.groww.in/stock-assets/logos/GSTK539254.png"
+            alt="Stock Logo"
+            class="stock-logo"
+          />
+          <div class="stock-name">{{ currentStock?.id ?? "..." }}</div>
+          &nbsp;&nbsp;&nbsp;
+          <p-button
+            icon="pi pi-plus"
+            styleClass="p-button-rounded p-button-secondary p-button-outlined"
+            (click)="addToWatchlist()"
+            class="button-with-space"
+            id="add-watchlist"
+          >
+          </p-button>
+        </div>
+
+        <div class="stock-price">
+          <b
+            >{{ ASSET_TYPE === "CRYPTO" ? "$" : "₹"
+            }}{{ (currentStock?.price | number : "1.2-2") ?? "..." }}</b
+          >
+        </div>
+        <div style="display: flex; justify-content: flex-start">
+          <p-button
+            label="Delivery"
+            class="clear"
+            [style]="{
+              minWidth: '100%',
+              'background-color': 'white',
+              color: 'black',
+              'margin-right': '2rem'
+            }"
+          ></p-button>
+          <p-button
+            label="Intraday"
+            class="clear"
+            [style]="{
+              minWidth: '100%',
+              'background-color': 'white',
+              color: 'black',
+              'margin-left': '2rem'
+            }"
+          ></p-button>
+        </div>
+        <div class="quantity-input">
+          <label for="quantity">Quantity:</label>
+          <input
+            type="number"
+            id="quantity"
+            name="quantity"
+            min="1"
+            [(ngModel)]="quantity"
+            (ngModelChange)="calculateSubtotal()"
+          />
+        </div>
+
+        <!-- <div class="p-inputgroup">
+          <span class="p-inputgroup-addon">$</span>
+          <input type="text" pInputText placeholder="Enter Target" />
+          <span class="p-inputgroup-addon">.00</span>
+        </div> -->
+        <h1 id="subtotal">
+          Total Price: <b>₹ {{ subtotal | number : "1.2-2" }}</b>
+        </h1>
+        <div class="buy-sell-buttons">
+          <button class="buy-button" (click)="buyAssest()">Buy</button>
+          <!-- <button class="sell-button">Sell</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

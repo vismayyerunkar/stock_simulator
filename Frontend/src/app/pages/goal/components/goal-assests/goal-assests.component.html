@@ -1,0 +1,129 @@
+<div class="card-container">
+  <div class="card">
+    <div class="card-content">
+      <div class="card-title">Total Expected Return :</div>
+      <div class="card-text">{{goalDetails?.total_expected_return | number : "1.2" }}<span class="green">(+2.0%)</span></div>
+    </div>
+    <div class="card-content">
+      <div class="card-title">Total Purchase</div>
+      <div class="card-text">{{goalDetails?.total_purchase | number : "1.2"}}</div>
+    </div>
+    <div class="card-content">
+      <div class="card-title">Future Value</div>
+      <div class="card-text">{{goalDetails?.future_value | number : "1.2"}}<span class="green">(+5.96%)</span></div>
+    </div>
+    <div class="card-content">
+      <div class="card-title">Total Years</div>
+      <div class="card-text">{{goalDetails?.years | number : "1.2"}} Years <span class="green">(+5.96%)</span></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-content">
+      <div class="card-title">Crypto Expected Return :</div>
+      <div class="card-text">{{goalDetails?.crypto_expected_return | number : "1.2"}}<span class="green">(+1.5%)</span></div>
+    </div>
+    <div class="card-content">
+      <div class="card-title">Crypto Percentage :</div>
+      <div class="card-text">{{goalDetails?.crypto_percentage | number : "1.2"}}</div>
+    </div>
+    <div class="card-content">
+      <div class="card-title">Stocks Expected Return :</div>
+      <div class="card-text">{{goalDetails?.stocks_expected_return| number : "1.2"}}<span class="green">(+10.0%)</span></div>
+    </div>
+    <div class="card-content">
+      <div class="card-title">Stocks Percentage :</div>
+      <div class="card-text">{{goalDetails?.stocks_percentage | number : "1.2"}}<span class="green">(+10.0%)</span></div>
+    </div>
+  </div>
+</div>
+<h1><b>Goal Assests</b></h1>
+
+<div class="table">
+  <p-table [paginator]="true" [rows]="10" [value]="goalAssets" class="ipo-table">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Company Logo</th>
+        <th>Company Name</th>
+        <th>Cagr</th>
+        <th>market Cap</th>
+        <th>Price</th>
+        <th>Purchase</th>
+        <th>Quantity</th>
+        <th>Expected Cagr</th>
+        <th>Expected Returns</th>
+        <th>Percentage</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-goalAssets>
+      <!-- Check if assetType is 'STOCK' -->
+      <tr>
+        <td>
+          <img
+            src="https://tse3.mm.bing.net/th?id=OIP.ag5nBrr4YiPHmZmBSHJypQHaHa&pid=Api&P=0&h=180"
+            alt="Company Logo"
+            style="width: 20%"
+          />
+        </td>
+        <td>
+          <b>{{ goalAssets?.Symbol}}</b>
+        </td>
+        <td>
+          <b>{{  goalAssets?.cagr }}</b>
+        </td>
+        <td>₹ {{  goalAssets?.marketCap.toFixed(2) }}</td>
+        <td>
+          ₹{{  goalAssets?.price | number : "1.2-2"}}
+        </td>
+        <td>
+          <b
+            >
+            ₹{{
+              ( goalAssets?.purchase | number : "1.2-2") ??
+                "loading..."
+            }}</b
+          >
+        </td>
+        <td
+        >
+          {{
+            (goalAssets?.quantity.toFixed(2)) ??
+              "loading..."
+          }}
+        </td>
+        <td
+        >
+          {{
+            (goalAssets?.exp_cagr) ??
+              "loading..."
+          }}
+        </td>
+        <td
+        >
+        ₹{{
+            (goalAssets?.exp_returns.toFixed(2)) ??
+              "loading..."
+          }}
+        </td>
+        <td
+        >
+          {{
+            (goalAssets?.percentage) ??
+              "loading..."
+          }} %
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<div class="goal-button">
+  <p-button styleClass="p-button-outlined">
+    <img
+      alt="logo"
+      src="https://tse1.mm.bing.net/th?id=OIP.NkvlXW-hjV_BnXLmi-kPCgHaF-&pid=Api&P=0&h=180"
+      style="width: 1.5rem"
+      (click)="show()"
+    />
+    <button (click)="createGoal()" class="ml-2 font-bold">Set Goal</button>
+  </p-button>
+</div>
+<h1>.</h1>

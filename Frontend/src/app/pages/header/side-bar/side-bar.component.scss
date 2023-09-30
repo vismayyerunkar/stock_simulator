@@ -1,0 +1,34 @@
+.pi-bars {
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.menu-item{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  cursor: pointer;
+
+  .highlight{
+    width: 3px;
+    height: 100%;
+  }
+
+  .menu-item-name{
+    font-size: 18px;
+    margin-left: 12px;
+  }
+}
+
+.menu-item:hover,
+.menu-active{
+  .highlight{
+    background-color: blue;
+  }
+
+  .menu-item-name{
+    color: blue;
+  }
+}

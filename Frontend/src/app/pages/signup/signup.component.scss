@@ -1,0 +1,50 @@
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 3rem;
+  margin-left: 2rem;
+}
+.col-1 {
+  flex: 0 4 auto;
+  width: 50%;
+  margin-bottom: 0%;
+}
+.col-2 {
+  flex: 0 0 auto;
+  padding: 0 4rem;
+  width: 50%;
+  margin-top: 5rem;
+}
+.col-2 h3 {
+  font-size: 30px;
+  margin-bottom: 2rem;
+  margin-left: 8rem;
+}
+.col-2 input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 150%;
+  height: 150%;
+}
+:host ::ng-deep .p-button {
+  margin-top: 2rem;
+  border-radius: 20px;
+  background-color: blueviolet;
+  width: 29rem;
+  cursor: pointer;
+}
+@media screen and (max-width: 960px) {
+  .p-button {
+    margin-bottom: 0.5rem;
+
+    &:not(.p-button-icon-only) {
+      display: flex;
+      width: 22rem;
+    }
+  }
+  .p-buttonset {
+    .p-button {
+      margin-bottom: 0;
+    }
+  }
+}

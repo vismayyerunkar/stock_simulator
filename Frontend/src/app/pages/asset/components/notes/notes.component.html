@@ -1,0 +1,10 @@
+<p-card styleClass="notesCard">
+  <div class="flex flex-row justify-content-end">
+    <p-button label="Add Note" class="mb-3" (click)="showDialog()"></p-button>
+  </div>
+  <p-card [header]="note.note" styleClass="note" *ngFor="let note of notes">
+    <h3>Added By: {{note.user}}</h3>
+    <h3>Added On: {{note.created_on| date}}</h3>
+  </p-card>
+</p-card>
+<app-add-note-modal [title]="'Add Note'" (note)="addNote($event)"></app-add-note-modal>

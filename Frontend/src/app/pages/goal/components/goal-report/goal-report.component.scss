@@ -1,0 +1,93 @@
+.surface-section {
+  background-color: #f5f5f5;
+  padding: 2rem;
+  text-align: center;
+  max-width: 100%;
+  margin: 0 auto;
+  border-radius: 10px;
+  margin: 2rem 2rem 2rem 2rem;
+}
+
+.font-medium.text-3xl {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.text-900 {
+  font-weight: 900;
+}
+
+.text-500 {
+  font-weight: 500;
+  margin-right: 2rem;
+}
+
+.p-button-outlined.p-button-success {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.p-button-outlined.p-button-success .p-button-label {
+  font-weight: 600;
+  color: #4caf50;
+}
+
+.p-button-outlined.p-button-success:hover {
+  background-color: transparent;
+  box-shadow: none;
+  color: #4caf50;
+  border-color: #4caf50;
+}
+
+ul.list-none {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-top: 1px solid #ddd;
+}
+
+.text-900.w-full {
+  text-align: left;
+}
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.p-button-outlined.p-button-success:hover {
+  background-color: transparent;
+  box-shadow: none;
+  color: #4caf50;
+  border-color: #4caf50;
+}
+.table {
+  margin: 2rem 2rem 0 2rem;
+}
+@media screen and (max-width: 768px) {
+  .surface-section {
+    padding: 1rem;
+  }
+
+  .text-500.w-6 {
+    font-weight: 500;
+    width: 100%;
+    text-align: left;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .p-button-outlined.p-button-success {
+    justify-content: flex-start;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}

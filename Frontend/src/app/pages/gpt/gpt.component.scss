@@ -1,0 +1,112 @@
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  padding: 10px;
+
+  @media screen and (max-width: 768px) {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  @media screen and (min-width: 769px) {
+    flex-grow: 1;
+    max-width: none;
+    margin-right: 300px;
+  }
+}
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message {
+  padding: 10px;
+  border-radius: 20px;
+  max-width: 70%;
+  word-wrap: break-word;
+
+  @media screen and (max-width: 768px) {
+    max-width: 100%;
+  }
+}
+
+.user-message {
+  align-self: flex-end;
+  background-color: #0084ff;
+  color: white;
+}
+
+.chat-input {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  width: 100%;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+}
+
+input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-right: 1rem;
+
+  @media screen and (max-width: 768px) {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+}
+
+button {
+  background-color: #0084ff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  width: 100%;
+}
+.instructions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #f5f5f5;
+  padding: 20px;
+  box-shadow: -1px 0 5px rgba(0, 0, 0, 0.1);
+  margin-top: 5.5rem;
+
+  @media screen and (max-width: 768px) {
+    position: relative;
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+.p-tabview {
+  border: none;
+}
+
+.p-tabview .p-tabview-title {
+  background-color: #0084ff;
+  color: white;
+}
+
+.p-tabview .p-tabview-title:hover {
+  background-color: #0073e6;
+}
+
+.p-tabview .p-tabview-panels {
+  border: none;
+}
+
+.p-tabview .p-tabview-panel {
+  border: none;
+}

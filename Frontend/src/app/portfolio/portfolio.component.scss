@@ -1,0 +1,111 @@
+.table {
+  margin-top: 2rem;
+}
+h1 {
+  margin: 2rem 0 0 2rem;
+}
+
+.ipo-list {
+  margin: 0 4rem;
+  padding: 2rem 0;
+}
+
+.ipo-table {
+  width: 80%;
+}
+
+#sale {
+  width: 10px;
+}
+.ipo-table img {
+  max-width: 40px;
+  max-height: 40px;
+}
+
+.sell-btn{
+  color:red;
+  width:60px;
+  padding:5px;
+  border-radius:10px;
+  border:2px solid red;
+  cursor:pointer;
+}
+
+.ipo-table th,
+.ipo-table td {
+  padding: 0.75rem 1rem;
+}
+
+.change-percentage-positive {
+  color: green;
+  font-size: large;
+  font-weight: 700;
+}
+.table {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.change-percentage-negative {
+  color: red;
+  font-size: large;
+  font-weight: 700;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.card-container {
+  display: flex;
+  gap: 2rem;
+}
+.mycard {
+  flex: 1;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.left-card {
+  background-color: #f9f9f9;
+  color: #44c790;
+  font-weight: 4000;
+}
+
+.right-card {
+  background-color: #fff;
+  color: #e74c3c;
+}
+
+.card-container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.card-container .mycard {
+  flex: 1;
+}
+
+.card__insights {
+  margin-top: 2rem;
+}
+
+.card__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* Media query for small screens and mobile phones */
+@media (max-width: 768px) {
+  .table {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    width: 100%; /* Make the table full width on small screens */
+  }
+
+  /* Other styles for small screens go here */
+}

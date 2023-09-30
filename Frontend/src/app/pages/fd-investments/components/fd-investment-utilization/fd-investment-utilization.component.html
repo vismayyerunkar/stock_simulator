@@ -1,0 +1,52 @@
+<p-table
+  [value]="investmentUtilizationList"
+  dataKey="id"
+  styleClass="p-datatable-customers p-datatable-gridlines"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>ID</th>
+      <th>Asset</th>
+      <th>Utilization Id</th>
+      <th>Type</th>
+      <th>Created On</th>
+      <th>Amount</th>
+      <th>Status</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-investment>
+    <tr>
+      <td>{{ investment.id }}</td>
+      <td>
+        <button
+          pButton
+          type="button"
+          icon="pi pi-window-maximize"
+          class="p-button-text p-button-rounded p-button-sm"
+          (click)="openInvestmentInNewTab(investment.asset)"
+        ></button>
+      </td>
+      <td>{{ investment.utilization_id }}</td>
+      <td>{{ investment.type }}</td>
+      <td>{{ investment.created_on | date }}</td>
+      <td>{{ investment.amount | number : "1.2" }}</td>
+      <td>
+        {{ investment.status }} <br />
+        <div style="font-size: 10px">
+          {{ investment.status_dtm | date }}
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td
+        colspan="7"
+        [style]="{ 'justify-content': 'center', 'text-align': 'center' }"
+      >
+        No Investment Utilization found.
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+<p-toast position="top-right"></p-toast>

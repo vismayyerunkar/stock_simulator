@@ -1,0 +1,98 @@
+<link rel="stylesheet" href="https://unpkg.com/primeflex@3.1.2/primeflex.css" />
+
+<div class="app-header-container">
+  <p-menubar>
+    <ng-template pTemplate="end">
+      <div class="search-wallet-profile-container">
+        <div class="search-container">
+          <input
+            id="search"
+            type="text"
+            placeholder="Search"
+            [(ngModel)]="searchTerm"
+            (input)="onInputChange()"
+            (keyup.enter)="searchAsset(searchTerm)"
+          />
+          <div class="search-results">
+            <ul>
+              <li
+                *ngFor="let symbol of stockSymbols"
+                class="search-list-item"
+                (click)="searchAsset(symbol)"
+              >
+                {{ symbol["1. symbol"] }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <i
+          id="wallet"
+          class="pi pi-wallet"
+          style="font-size: 2rem; margin-right: 2rem"
+          [routerLink]="['/wallet']"
+        ></i>
+
+        <!-- Profile image with tooltip/card -->
+        <div class="profile-tooltip">
+          <img
+            src="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
+            alt="Profile"
+            width="30"
+            height="30"
+            class="mr-5 mt-1"
+            [routerLink]="['/profile']"
+          />
+          <div class="tooltip-content p-card p-fluid">
+            <!-- Content for the tooltip/card -->
+            <div class="profile-info">
+              <!-- Your header content -->
+
+              <div id="name">
+                <b>{{ userData?.name }}</b>
+              </div>
+              <p-button
+                id="logout"
+                icon="pi pi-power-off"
+                styleClass="p-button-rounded p-button-outlined"
+                (click)="logout()"
+              ></p-button>
+            </div>
+            <div>
+              Funds:
+              <span id="fund"
+                ><b>${{ funds }}</b></span
+              >
+            </div>
+            <div
+              class="button-container"
+              style="display: flex; justify-content: space-between"
+            >
+              <p-button label="Add" styleClass="p-button-outlined"></p-button>
+              <p-button
+                label="Withdraw"
+                styleClass="p-button-outlined p-button-danger"
+              ></p-button>
+            </div>
+            <!-- <a href="#">Logout</a> -->
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="start">
+      <div style="display: flex; align-items: center">
+        <a [routerLink]="['/dashboard']">
+          <p-avatar
+            image="https://drive.google.com/uc?export=view&id=1MSNlunX-oDSjP5X38JbD7T1IlOasE_GQ"
+            styleClass="mr-2"
+            size="large"
+            routerLink="dashboard"
+            id="logo"
+          ></p-avatar>
+        </a>
+        <p-menubar [model]="items"></p-menubar>
+      </div>
+    </ng-template>
+  </p-menubar>
+  <p-menu #userInfo [popup]="true" [model]="items"></p-menu>
+</div>

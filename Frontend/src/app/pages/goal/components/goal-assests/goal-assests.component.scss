@@ -1,0 +1,77 @@
+.card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center !important;
+}
+.table {
+  margin: 2rem 2rem 0 2rem;
+}
+.card {
+  background-color: var(--gray-200);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-right: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40%;
+  height: 16rem;
+  margin: 2rem 5rem 0 5rem;
+
+  .card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    height: 5rem;
+
+    .card-title {
+      font-weight: bold;
+      font-size: 0.8rem;
+    }
+
+    .card-text {
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+
+      .green {
+        color: var(--green-500);
+        margin-left: 0.3rem;
+      }
+
+      .red {
+        color: var(--red-500);
+        margin-left: 0.3rem;
+      }
+    }
+  }
+}
+h1 {
+  margin: 2rem 0 0 2rem;
+  font-size: x-large;
+  color: gray;
+}
+.goal-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 2rem 0 2rem 0 !important;
+}
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}

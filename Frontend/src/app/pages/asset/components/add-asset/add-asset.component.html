@@ -1,0 +1,274 @@
+<app-header></app-header>
+<div class="navigate-back">
+  <i
+    class="pi pi-angle-left"
+    style="font-size: 2rem"
+    (click)="navigateBack()"
+  ></i>
+
+  <h2>{{assetId ? 'Update' : 'Add'}} Assets</h2>
+</div>
+<p-card class="section">
+  <form [formGroup]="assetForm">
+    <div class="grid p-fluid">
+      <div class="col-12 sm:col-6 md:col-4">
+        <h3>Partner</h3>
+        <p-dropdown
+          placeholder="Select Partner"
+          optionLabel="name"
+          optionValue="id"
+          [options]="assetPartnerOption"
+          formControlName="partner"
+          [style]="{ minWidth: '100%', maxWidth: '100%' }"
+        ></p-dropdown>
+      </div>
+      <div class="col-12 sm:col-6 md:col-4">
+        <h3>Asset Class</h3>
+        <p-dropdown
+          placeholder="Select Asset Class"
+          optionLabel="name"
+          optionValue="id"
+          [options]="assetClassOptions"
+          formControlName="asset_class"
+          [style]="{ minWidth: '100%', maxWidth: '100%' }"
+        ></p-dropdown>
+      </div>
+      <div class="col-12 sm:col-6 md:col-4">
+        <h3>Name</h3>
+        <input
+          type="text"
+          pInputText
+          placeholder="Name"
+          formControlName="name"
+        />
+      </div>
+    </div>
+
+    <div class="grid p-fluid my-2">
+      <div class="col-12 sm:col-6 lg:col-4 text-center">
+        <div class="container" *ngIf="!fileAsBase64">
+          <img
+            src="../../../../../assets/images/upload-image.png"
+            alt="Upload Image"
+          />
+          <h2 class="mb-0">Upload Image</h2>
+          <input
+            #fileInput
+            name="file"
+            type="file"
+            accept=".jpg,.png,.jpeg"
+            (change)="fileUploaded($event)"
+            (click)="resetFile()"
+            value=""
+            class="input-file"
+          />
+        </div>
+        <img
+          *ngIf="fileAsBase64"
+          id="assetImage"
+          [src]="fileAsBase64"
+          height="250"
+          width="auto"
+          alt="Asset Image"
+          [style]="{ 'max-width': '100%' }"
+          (click)="resetFile()"
+        />
+      </div>
+      <div class="col-12 sm:col-6 lg:col-8 pb-0">
+        <div class="grid p-fluid">
+          <div class="col-12">
+            <h3>Short Description (Max Length: 50)</h3>
+            <input type="text" pInputText formControlName="short_description" minlength="1" maxlength="50"/>
+          </div>
+          <div class="col-12">
+            <h3>Description</h3>
+            <textarea
+              type="text"
+              pInputText
+              rows="5"
+              formControlName="description"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid p-fluid">
+      <div class="col-12 sm:col-6 lg:col-3">
+        <h3>Interest Rate</h3>
+        <input
+          type="number"
+          pInputText
+          min="1"
+          max="100"
+          formControlName="interest_rate"
+        />
+      </div>
+      <div class="col-12 sm:col-6 lg:col-3">
+        <h3>Tenure</h3>
+        <input type="number" pInputText min="1" formControlName="tenure" />
+      </div>
+      <div class="col-12 sm:col-6 lg:col-3">
+        <h3>Tenure Type</h3>
+        <p-dropdown
+          placeholder="Select Tenure Type"
+          [options]="tenureOptions"
+          formControlName="tenure_type"
+          [style]="{ minWidth: '100%', maxWidth: '100%' }"
+        ></p-dropdown>
+      </div>
+      <div class="col-12 sm:col-6 lg:col-3">
+        <h3>Repayment Type</h3>
+        <p-dropdown
+          placeholder="Select Repayment Type"
+          [options]="repaymentOptions"
+          formControlName="repayment_type"
+          [style]="{ minWidth: '100%', maxWidth: '100%' }"
+        ></p-dropdown>
+      </div>
+    </div>
+
+    <div class="grid p-fluid">
+      <div class="col-12 sm:col-6 lg:col-3">
+        <h3>Minimum Investment</h3>
+        <input
+          type="number"
+          pInputText
+          min="1"
+          formControlName="minimum_investment"
+        />
+      </div>
+      <div class="flex flex-row align-items-center col-12 sm:col-6 lg:col-3">
+        <div class="flex flex-row mr-4">
+          <p-checkbox [binary]="true" formControlName="is_secured"></p-checkbox>
+          <h3 for="ny" [style]="{ 'margin-left': '10px' }">Secured</h3>
+        </div>
+        <div class="flex flex-row">
+          <p-checkbox [binary]="true" formControlName="is_listed"></p-checkbox>
+          <h3 for="ny" [style]="{ 'margin-left': '10px' }">Listed</h3>
+        </div>
+      </div>
+      <div class="col-12 sm:col-6 lg:col-3">
+        <h3>Maturity Date</h3>
+        <p-calendar
+          formControlName="maturity_date"
+          dateFormat="yy-mm-dd"
+          [showIcon]="true"
+          [minDate]="today"
+        ></p-calendar>
+      </div>
+      <div class="col-12 sm:col-6 lg:col-3">
+        <h3>Maturity Date Buffer</h3>
+        <input
+          type="number"
+          pInputText
+          formControlName="maturity_date_buffer"
+          min="1"
+        />
+      </div>
+    </div>
+    <div class="grid p-fluid">
+      <div class="col-12 sm:col-6 lg:col-3">
+        <h3>Amount</h3>
+        <input type="number" pInputText formControlName="amount" min="1" />
+      </div>
+      <div class="col-12 sm:col-6 lg:col-3">
+        <h3>Risk Category</h3>
+        <p-dropdown
+          placeholder="Select Risk Category"
+          [options]="riskCategoryOptions"
+          formControlName="risk_category"
+          [style]="{ minWidth: '100%', maxWidth: '100%' }"
+        ></p-dropdown>
+      </div>
+      <div class="col-12 sm:col-6 lg:col-3">
+        <h3>Accepted Investment Types</h3>
+        <p-multiSelect
+          placeholder="Select Accepted Investment"
+          [options]="acceptedInvestmentOptions"
+          formControlName="accepted_investment_type"
+          [style]="{ minWidth: '100%', maxWidth: '100%' }"
+        ></p-multiSelect>
+      </div>
+    </div>
+    <div class="col-12 sm:col-6">
+      <h3>Additional Details</h3>
+
+      <p-table
+        styleClass="p-datatable-gridlines"
+        [tableStyle]="{ width: '100%' }"
+        [value]="additionalProperties"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Key</th>
+            <th>Value</th>
+            <th>action</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-i="rowIndex" let-item>
+          <tr>
+            <td>
+              <input
+                required
+                [style]="{ border: '0px', outline: 'none' }"
+                (keypress)="omitSpecialCharacter($event)"
+                type="text"
+                [(ngModel)]="item.key"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </td>
+            <td>
+              <input
+                required
+                [style]="{ border: '0px', outline: 'none' }"
+                type="text"
+                [(ngModel)]="item.value"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </td>
+            <td>
+              <i
+                class="pi pi-trash cursor-pointer mr-2"
+                (click)="removeProperty(i)"
+              ></i>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <div class="flex flex-row justify-content-center">
+        <button
+          pButton
+          pRipple
+          type="button"
+          icon="pi pi-plus"
+          class="p-button-rounded p-button-danger mt-4"
+          (click)="addPropertyRow()"
+        ></button>
+      </div>
+    </div>
+    <div class="col-12 flex flex-row justify-content-end">
+      <button
+        *ngIf="!assetId || (assetId && asset?.status === 'DRAFT')"
+        pButton
+        pRipple
+        type="button"
+        label="Save as Draft"
+        style="margin-right: 1rem"
+        class="p-button-secondary"
+        [disabled]="assetForm.invalid || loading || !validateAdditionalProperty()"
+        (click)="submitForm('DRAFT')"
+      ></button>
+      <p-button
+        pRipple
+        type="button"
+        [label]="assetId ? 'Update' : 'Save'"
+        (click)="submitForm('NEW')"
+        [disabled]="
+          assetForm.invalid || loading || !validateAdditionalProperty()
+        "
+      ></p-button>
+    </div>
+  </form>
+</p-card>
+<p-toast position="top-right"></p-toast>
